@@ -43,4 +43,60 @@ public class MuestraForense {
                 ", informe=" + informe +
                 '}';
     }
+
+    public int getIdMuestra() {
+        return idMuestra;
+    }
+
+    public void setIdMuestra(int idMuestra) {
+        this.idMuestra = idMuestra;
+    }
+
+    public int getCodigoCaso() {
+        return codigoCaso;
+    }
+
+    public void setCodigoCaso(int codigoCaso) {
+        this.codigoCaso = codigoCaso;
+    }
+
+    public String getTipoMuestra() {
+        return tipoMuestra;
+    }
+
+    public void setTipoMuestra(String tipoMuestra) {
+        this.tipoMuestra = tipoMuestra;
+    }
+
+    public String getFechaRecogida() {
+        return fechaRecogida;
+    }
+
+    public void setFechaRecogida(String fechaRecogida) {
+        this.fechaRecogida = fechaRecogida;
+    }
+
+    public boolean isEstadoCustodia() {
+        return estadoCustodia;
+    }
+
+    public void setEstadoCustodia(boolean estadoCustodia) {
+        this.estadoCustodia = estadoCustodia;
+    }
+
+    public CentroForense getCentro() {
+        return centro;
+    }
+
+    public void setCentro(CentroForense centro) {
+        this.centro = centro;
+    }
+
+    public InformeForense getInforme() {
+        return informe;
+    }
+
+    public void setInforme(InformeForense informe) {
+        this.informe = informe;
+    }
 }

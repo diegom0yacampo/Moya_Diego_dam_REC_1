@@ -1,6 +1,7 @@
 package examen.moya.diego.dao;
 
 import examen.moya.diego.beans.CentroForense;
+import examen.moya.diego.motores.MotorSQL;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -20,7 +21,6 @@ public class CentroForenseDAOImpl
         private static final String SQL_INSERT =
                 "INSERT INTO centroforense " +
                         "(" +
-                        "id, " +
                         "nombre, " +
                         "pais, " +
                         "nivelseguridad, " +
@@ -28,15 +28,15 @@ public class CentroForenseDAOImpl
                         ") " +
                         "VALUES " +
                         "(" +
-                        "?, ?, ?, ?, ?" +
+                        "?, ?, ?, ?" +
                         ")";
 
         private static final String SQL_UPDATE =
-                "UPDATE \"nombre, \" + " +
+                "UPDATE centroforense " +
                         "SET " +
                         "nombre = ?, " +
                         "pais = ?, " +
-                        "nivelseguridad = ?, " +
+                        "nivelseguridad = ? " +
                         "WHERE id = ?";
 
         private static final String SQL_DELETE =
@@ -59,7 +59,7 @@ public class CentroForenseDAOImpl
                 motorSQL.prepare(SQL_INSERT);
                 motorSQL.getPs().setString(1, centroforense.getNombre());
                 motorSQL.getPs().setString(2, centroforense.getPais());
-                motorSQL.getPs().setString(3, centroforense.getnivelseguridad());
+                motorSQL.getPs().setInt(3, centroforense.getNivelSeguridad());
                 motorSQL.getPs().setString(4, AUTOR);
 
                 int rows = motorSQL.executeUpdate();
@@ -89,9 +89,9 @@ public class CentroForenseDAOImpl
                 motorSQL.getPs().setString(
                         2,
                         centroforense.getPais());
-                motorSQL.getPs().setString(
+                motorSQL.getPs().setInt(
                         3,
-                        centroforense.getnivelseguridad());
+                        centroforense.getNivelSeguridad());
                 motorSQL.getPs().setInt(
                         4,
                         id);
@@ -163,7 +163,7 @@ public class CentroForenseDAOImpl
                 motorSQL.close();
             }
 
-            return CentroForense;
+            return centroforense;
         }
 
         @Override
@@ -209,7 +209,7 @@ public class CentroForenseDAOImpl
 
             CentroForense centroforense = new CentroForense();
 
-            centroforense.setId(
+            centroforense.setIdCentro(
                     rs.getInt("id"));
 
             centroforense.setNombre(
@@ -218,10 +218,10 @@ public class CentroForenseDAOImpl
             centroforense.setPais(
                     rs.getString("pais"));
 
-            centroforense.setnivelseguridad(
-                    rs.getString("nivel_seguridad"));
+            centroforense.setNivelSeguridad(
+                    Integer.parseInt(rs.getString("nivel_seguridad")));
 
             return centroforense;
         }
     }
-}
+

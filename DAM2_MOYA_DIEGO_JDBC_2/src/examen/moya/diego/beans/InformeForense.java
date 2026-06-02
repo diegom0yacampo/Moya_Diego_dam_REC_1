@@ -6,6 +6,32 @@ public class InformeForense {
     private int nivelRiesgo;
     private String conclusion;
 
+    public InformeForense() {
+    }
+
+    public InformeForense(boolean adnPositivo, int nivelRiesgo, String conclusion) {
+        this.adnPositivo = adnPositivo;
+        this.nivelRiesgo = nivelRiesgo;
+        this.conclusion = conclusion;
+    }
+
+    public InformeForense(int idInforme, boolean adnPositivo, int nivelRiesgo, String conclusion) {
+        this.idInforme = idInforme;
+        this.adnPositivo = adnPositivo;
+        this.nivelRiesgo = nivelRiesgo;
+        this.conclusion = conclusion;
+    }
+
+    @Override
+    public String toString() {
+        return "InformeForense{" +
+                "idInforme=" + idInforme +
+                ", adnPositivo=" + adnPositivo +
+                ", nivelRiesgo=" + nivelRiesgo +
+                ", conclusion='" + conclusion + '\'' +
+                '}';
+    }
+
     public int getIdInforme() {
         return idInforme;
     }
