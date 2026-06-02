@@ -1,5 +1,17 @@
 package examen.moya.diego.dao;
+import examen.moya.diego.motores.MotorSQL;
+public abstract class AbstractDAO<T>
+        implements DAO<T> {
 
-public class AbstractDAO {
-    
+    protected MotorSQL motorSQL;
+
+    public AbstractDAO(MotorSQL motorSQL) {
+        this.motorSQL = motorSQL;
+    }
+
+    protected void printError(Exception e) {
+        System.out.println(
+                "[ERROR] " +
+                        e.getMessage());
+    }
 }
